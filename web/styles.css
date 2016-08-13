@@ -1,0 +1,353 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 8, 2016, 10:47:12 AM
+    Author     : Thinal
+*/
+
+
+@font-face{
+    font-family: 'Open Sans';
+    src: url('fonts/OpenSans');
+    src: local('OpenSans-Regular'), local('OpenSans'), url('fonts/OpenSans-Regular.ttf') format('truetype'); 
+    /*src: local('OpenSans-Light'), local('OpenSans'), url('fonts/OpenSans-Light.ttf') format('truetype'); 
+    src: local('OpenSans-Semibold'), local('OpenSans'), url('fonts/OpenSans-Semibold.ttf') format('truetype');*/ 
+}
+
+@media only screen and (max-width: 1080px){
+    .content{
+        height: 100%;
+    }
+}
+
+@media only screen and (min-width: 320px){
+    .content{
+        height: 100%;
+        margin-left: 0px;
+    }
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+title{
+    font-family: 'Open Sans';
+}
+body{
+    font-family: 'Open Sans';
+}
+a {
+    text-decoration: none;
+}
+
+div#header{
+    width: 100%;
+    height: 50px;
+    background-color: #2980b9;
+    margin: 0 auto;
+    
+}
+div#login{
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.log{
+    float: left;
+}
+.log h1{
+    font-size: 1.6em;
+    color: #00000;
+}
+.log input{
+    font-size: 0.8em;
+}
+.log_error{
+    float: left;
+    
+}
+.log_error p{
+    font-size: 1.0em;
+    padding-top: 170px;
+    
+}
+.reg{
+    padding-left: 10px;
+    
+}
+div.reg p{
+    font-size: 1.00em;
+}
+.save_button{
+    padding: 5px;
+    padding-left: 300px;
+}
+.save_button input{
+    font-size: 0.8em;
+    width: 10%;
+    height: 5%;
+    
+}
+.ticket_save_button{
+    padding: 5px;
+    padding-left: 455px;
+}
+.ticket_save_button input{
+    font-size: 1.0em;
+    width: 11%;
+    height: 5%;
+    
+}
+
+.proceed{
+    padding: 5px;
+    padding-left: 300px;
+}
+.proceed input{
+    width: 14%;
+    height: 5%;
+}
+.cancel_button{
+    padding: 5px;
+    padding-left: 255px;
+}
+.cancel_button input{
+    font-size: 0.8em;
+    width: 16%;
+    height: 5%;
+    
+}
+
+.log br{
+    
+    padding-left: 1px;
+}
+
+.logo{
+    float: left;
+    margin-top: 4px;
+}
+.logo a{
+    font-size: 1.6em;
+    color: #fff;
+    padding: 10px;
+}
+.logo a span{
+    font-weight: 300;
+}
+div#header a.logout{
+    float: right;
+    display: block;
+    text-align: right;
+    font-size: 1.0em;
+    padding: 4px;
+    padding-right: 5px;
+    color: #fff;
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+.sidebar{
+    width: 250px;
+    height: 100%;
+    background-color: #384B4F;
+    float: left;
+}
+
+ul#nav{
+    
+}
+ul#nav li{
+    list-style: none;
+}
+
+ul#nav li a{
+    color: #ccc;
+    display: block;
+    padding: 10px;
+    font-size: 0.8em;
+    border-bottom: 1px solid #0A0A0A;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+ul#nav li a:hover{
+    background-color: #030303;
+    color: #fff;
+    padding-left: 30px;
+}
+ul#nav li a.selected{
+    background-color: #030303;
+    color: #fff;
+}
+.content{
+    width: auto;
+    margin-left: 250px;
+    
+    background-color: #E6E4F5;
+    padding: 10px;
+}
+.content h1{
+    color: #212E69;
+    font-size: 1.5em;
+}
+.content p{
+    color: #424242;
+    font-size: 0.8em;
+}
+div#box{
+    margin-top: 15px;
+}
+div#box .box-top{
+    color: #fff;
+    text-shadow: 0px 0px 1px #ddd;
+    background-color: #2980b9;
+    padding: 5px;
+    padding-left: 15px;
+    font-weight: 300;
+}
+div#box .box-panel{
+    padding: 15px;
+    background-color: #fff;
+    font-weight: 300;
+}
+.box-panel a{
+    margin-left: 20px;
+}
+.box-panel a:active{
+    background-color: #4a4a4a;
+}
+div.select{
+    float: right;
+    padding-right: 5px;
+    
+}
+div.select li{
+    list-style: none;
+    padding-right: 2px 10px;
+    
+}
+div.select li a{
+    width: 150px;
+    color: #424242;
+    display: inline-block;
+    padding: 10px;
+    
+    font-size: 0.8em;
+    border-bottom: 1px solid #0A0A0A;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    text-align: left;
+}
+.select li a:hover{
+    background-color: #030303;
+    color: #fff;
+    padding-left: 30px;
+}
+.select li a.selected{
+    background-color: #030303;
+    color: #fff;
+}
+label{
+    display: table-cell;
+    text-align: left;
+    font-size: 0.8em;
+    padding-right: 5px;
+    
+}
+div.row input {
+  display: table-cell;
+  width: 250%;
+  height: 75%;    
+  padding-left: 5px;
+  
+}
+div.row textarea {
+  display: table-cell;
+  height: 150px;
+  width: 250%;
+  
+}
+div.row{
+    display:table-row;
+    padding-left: 15px;
+}
+div.clickrow{
+    font-size: 0.8em;
+    padding-left: 50px;
+}
+div.clickrow input{
+    margin-left: 12px;
+    margin-right: 5px;
+    
+}
+
+div.log_button input{
+    width: 50%;
+}
+a.moblie{
+    display: block;
+    color: #fff;
+    background-color: #000;
+    text-align: left;
+    padding: 5px;
+}
+
+a.moblie:active{
+    background-color: #4a4a4a;
+}
+div.view_ticket{
+    padding: 5px;
+}
+table{
+    
+    width: 70%;
+}
+td {
+    border-bottom: 2px solid #fff;
+    text-align: left;
+    width: 20%;
+    font-size: 0.8em;
+    padding-left: 15px;
+}
+th{
+    background-color: #BAB6E0;
+    border-bottom: 2px solid #ccc;
+    font-size: 0.9em;
+    padding: 2px;
+}
+div.select_doc p{
+    font-size: 1.00em;
+    padding: 5px;
+    padding-left: 5px;
+}
+
+div.select_doc select{
+    padding: 5px;
+    margin-left: 20px;
+    width: 30%;
+}
+
+tr:hover {background-color: #f5f5f5}
+div.select_pat p{
+    font-size: 1.00em;
+    padding: 5px;
+    padding-left: 5px;
+}
+div.select_pat select{
+    padding: 5px;
+    margin-left: 20px;
+    width: 30%;
+}

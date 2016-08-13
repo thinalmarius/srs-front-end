@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:60896/logic-layer/logiclink?wsdl" uri="src/conf/xml-resources/web-service-references/logiclink/wsdl/localhost_60896/logic-layer/logiclink.wsdl"/>
+    <system systemId="http://localhost:60896/logic-layer/logiclink?xsd=1" uri="src/conf/xml-resources/web-service-references/logiclink/wsdl/localhost_60896/logic-layer/logiclink.xsd_1.xsd"/>
+    <system systemId="http://localhost:1581/logic-layer/logiclink?wsdl" uri="src/conf/xml-resources/web-service-references/logiclink/wsdl/localhost_1581/logic-layer/logiclink.wsdl"/>
+    <system systemId="http://localhost:1581/logic-layer/logiclink?xsd=1" uri="src/conf/xml-resources/web-service-references/logiclink/wsdl/localhost_1581/logic-layer/logiclink.xsd_1.xsd"/>
+    <system systemId="http://localhost:1581/logic-layer/logiclink?xsd=2" uri="src/conf/xml-resources/web-service-references/logiclink/wsdl/localhost_1581/logic-layer/logiclink.xsd_2.xsd"/>
+</catalog>
