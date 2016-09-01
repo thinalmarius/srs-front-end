@@ -1,6 +1,6 @@
 <%-- 
-    Document   : home
-    Created on : Aug 5, 2016, 12:26:15 PM
+    Document   : customers
+    Created on : Aug 19, 2016, 9:54:31 PM
     Author     : Thinal
 --%>
 
@@ -19,7 +19,7 @@
 <html>
     <head>
         
-        <title>Home Page</title>
+        <title>Manage Customers</title>
         <link rel="stylesheet" type="text/css" href="styles.css" />
         <meta name="viewprot" content="width=device-width, initial-scale: 1.0, user-scalabe=0" />
     </head>
@@ -32,8 +32,8 @@
             
             <div class="sidebar">
                 <ul id="nav">
-                    <li><a class="selected" href="home.jsp">Home</a></li>
-                    <li><a href="customers.jsp">Customers</a></li>
+                    <li><a href="home.jsp">Home</a></li>
+                    <li><a class="selected" href="customers.jsp">Customers</a></li>
                     <li><a href="tickets.jsp">Tickets</a></li>                 
                     <% 
                         String user = (String)session.getAttribute("userSession");
@@ -44,14 +44,15 @@
                 </ul>
             </div>
             <div class="content">
-                <h1>Home</h1>
-                <p></p>
-                <div id="box">
-                    <div class="box-top">Welcome <%out.print(session.getAttribute("userSession"));%></div>
-                    <div class="box-panel"><a><%DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                                        Calendar cal = Calendar.getInstance();
-                                        out.print(dateFormat.format(cal.getTime())); //2014/08/06 16:00:22%></a></div>
+                <h1>Manage Customers</h1>
+                
+                <div class="select">
+                    <li><a href="newcustomer.jsp">Register Customer</a></li>
+                    <li><a href="viewcustomers.jsp">View Customers</a></li>        
                 </div>
+                <p></p>
+                
+                
             </div>
         </div>
         

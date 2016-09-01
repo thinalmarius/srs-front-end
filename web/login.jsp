@@ -27,7 +27,7 @@
         <div id="login">
             <div class="log">
             <h1>Login</h1>
-            <form action="checklogin.jsp" method="post">
+            <form action="LoginServlet" method="post">
             <br>Username : </br>
             <input type="text" name="txtUsername"></input>
             <br>Password : <br>

@@ -13,6 +13,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%if(session.getAttribute("userSession") == null){
             response.sendRedirect("login.jsp");
+            return;
        } %>
 
 <html>
@@ -23,7 +24,7 @@
         <meta name="viewprot" content="width=device-width, initial-scale: 1.0, user-scalabe=0" />
     </head>
     <div id="header">
-        <a class="logout" href="logout.jsp"><span>Logout</span></a>
+        <a class="logout" href="Logout"><span>Logout</span></a>
             <div class="logo"><a href="home.jsp">SRS</a></div>
         </div>
         <a class="moblie">MENU</a>

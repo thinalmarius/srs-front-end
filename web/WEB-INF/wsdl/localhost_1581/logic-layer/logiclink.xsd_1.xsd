@@ -2,6 +2,10 @@
 
 <xs:import namespace="http://datalayer/" schemaLocation="http://localhost:1581/logic-layer/logiclink?xsd=2"/>
 
+<xs:element name="addCustomer" type="tns:addCustomer"/>
+
+<xs:element name="addCustomerResponse" type="tns:addCustomerResponse"/>
+
 <xs:element name="checkUserPsd" type="tns:checkUserPsd"/>
 
 <xs:element name="checkUserPsdResponse" type="tns:checkUserPsdResponse"/>
@@ -28,6 +32,20 @@
 <xs:complexType name="checkUserPsdResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addCustomer">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="company" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addCustomerResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 

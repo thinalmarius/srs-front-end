@@ -1,6 +1,6 @@
 <%-- 
-    Document   : newticket
-    Created on : Aug 10, 2016, 4:02:44 PM
+    Document   : newcustomer
+    Created on : Aug 19, 2016, 10:06:16 PM
     Author     : Thinal
 --%>
 
@@ -11,16 +11,15 @@
 <%@page import="logic.Logiclink_Service"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%if(session.getAttribute("userSession") == null){
+<%if(session.getAttribute("userSession")==null){
             response.sendRedirect("login.jsp");
             return;
-       }
-%>
+       } %>
 
 <html>
     <head>
         
-        <title>New Ticket</title>
+        <title>Manage Customers</title>
         <link rel="stylesheet" type="text/css" href="styles.css" />
         <meta name="viewprot" content="width=device-width, initial-scale: 1.0, user-scalabe=0" />
     </head>
@@ -34,8 +33,8 @@
             <div class="sidebar">
                 <ul id="nav">
                     <li><a href="home.jsp">Home</a></li>
-                    <li><a href="customers.jsp">Customers</a></li>
-                    <li><a class="selected" href="tickets.jsp">Tickets</a></li>                 
+                    <li><a class="selected" href="customers.jsp">Customers</a></li>
+                    <li><a href="tickets.jsp">Tickets</a></li>                 
                     <% 
                         String user = (String)session.getAttribute("userSession");
                         if(user.equals("admin")){
@@ -45,25 +44,24 @@
                 </ul>
             </div>
             <div class="content">
-                <h1>New Ticket</h1>
+                <h1>New Customer</h1>
                 
                 <div class="select">
-                    <li><a class="selected" href="newticket.jsp">New Ticket</a></li>
-                    <li><a href="viewtickets.jsp">View Tickets</a></li>        
+                    <li><a class="selected" href="newcustomer.jsp">Register Customer</a></li>
+                    <li><a href="viewcustomers.jsp">View Customers</a></li>        
                 </div>
                 <br>
                 
                 <div class="reg">
                     <p><strong>Insert Details</strong></p><br>
-                    <form action="TicketHandler" method="post" onsubmit="save()">
+                    <form action="RegCustomer" method="post">
                     <div class="row"><label>Name:</label><input type="text" name="name" required="true" placeholder="Name" maxlength="32"><br><br></div>
                     <div class="row"><label>Email:</label><input type="text" name="email" required="true" placeholder="Email" maxlength="50"><br><br></div>
                     <div class="row"><label>Company:</label><input type="text" name="company" required="true" placeholder="Company"><br><br></div>
-                    <div class="row"><label>Problem Area:</label><textarea name="area" required="true" placeholder="Problem Area"></textarea><br><br></div>
-                    <div class="ticket_save_button"><input type="submit" value="Save"></input></div>
+                    <div class="save_button"><input type="submit" value="Save"></input></div>
                 </form>
                     
-                </div>
+                <p></p>
                 
                 
             </div>
