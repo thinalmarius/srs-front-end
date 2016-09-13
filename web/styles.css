@@ -54,29 +54,49 @@ div#header{
     
 }
 div#login{
-    width: 100%;
+    width: 500px;
+    height: 300px;
+    text-align: center; 
     margin: 0 auto;
-    padding: 20px;
+    margin-top: 150px;
+    border-radius: 5px;
+    background-color: rgba(128, 212, 255, 0.6);
 }
-.log{
-    float: left;
-}
-.log h1{
+
+div#log h1{
     font-size: 1.6em;
-    color: #00000;
+    color: #2980b9;
+    margin-bottom: 10px;
+    padding-top: 10px;
 }
-.log input{
-    font-size: 0.8em;
-}
-.log_error{
-    float: left;
-    
-}
-.log_error p{
+div#log input{
+    height: 45px;
+    width: 300px;
     font-size: 1.0em;
-    padding-top: 170px;
-    
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding-left: 25px;
+    border: none;
 }
+.btn{
+    padding: 5px 30px;
+    font-size: 1.0em;
+    border: none;
+    background: #4aaf51;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.btn:hover { opacity: 0.7; color: #000; }
+.btn:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+
+.forgot_link{
+    color: #000;
+    font-size: 0.8em;
+    margin-top: 20px;
+}
+.forgot_link:hover{color: #2980b9}
 .reg{
     padding-left: 10px;
     
@@ -308,11 +328,21 @@ a.moblie{
 a.moblie:active{
     background-color: #4a4a4a;
 }
-div.view_ticket{
+div#view_ticket{
+    padding: 5px;
+}
+.big_row{
+    width: 30%
+}
+div#view_customer{
+    padding: 5px;
+    
+}
+div#view_users{
     padding: 5px;
 }
 table{
-    
+    border: none;
     width: 70%;
 }
 td {
@@ -323,31 +353,14 @@ td {
     padding-left: 15px;
 }
 th{
-    background-color: #BAB6E0;
+    background-color: rgb(51, 133, 255);
+    color: #fff;
     border-bottom: 2px solid #ccc;
     font-size: 0.9em;
     padding: 2px;
 }
-div.select_doc p{
-    font-size: 1.00em;
-    padding: 5px;
-    padding-left: 5px;
-}
-
-div.select_doc select{
-    padding: 5px;
-    margin-left: 20px;
-    width: 30%;
-}
 
 tr:hover {background-color: #f5f5f5}
-div.select_pat p{
-    font-size: 1.00em;
-    padding: 5px;
-    padding-left: 5px;
-}
-div.select_pat select{
-    padding: 5px;
-    margin-left: 20px;
-    width: 30%;
-}
+
+.logout span:hover{color: #000}
+.logout span:active{color: #fff}

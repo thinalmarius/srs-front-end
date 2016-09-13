@@ -1,9 +1,11 @@
 <%-- 
-    Document   : users
-    Created on : Aug 8, 2016, 3:02:10 PM
+    Document   : view_users
+    Created on : Sep 12, 2016, 10:48:33 AM
     Author     : Thinal
 --%>
 
+<%@page import="logic.Users"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
@@ -39,12 +41,37 @@
                 </ul>
             </div>
             <div class="content">
-                <h1>Manage Users</h1>
+                <h1>View Users</h1>
                 <div class="select">
                     <li><a href="new_user.jsp">Register User</a></li>
-                    <li><a href="view_users.jsp">View Users</a></li>        
+                    <li><a class="selected" href="view_users.jsp">View Users</a></li>        
                 </div>
-                <p></p>
+                <br>
+                <div class="view_users">
+                    <%
+                            
+                            
+                            Logiclink_Service service = new Logiclink_Service();
+                            Logiclink proxy = service.getLogiclinkPort();
+                            ArrayList<Users> user = new ArrayList<Users>();
+                            user =(ArrayList<Users>) proxy.viewUsers();
+                                                        
+                            
+                            out.print("<table>");
+                            out.print("<tr><th>Username</th><th>Email</th></tr>");
+                            
+                            for (Users u : user){
+                                out.print("<tr><td>"
+                                +u.getName()
+                                +"</td><td>"
+                                +u.getEmail()
+                                +"</td><td>"
+                                +"<a class="+"delete"+" href="+"deleteUser?id="+u.getId()+">Delete</a></td></tr>");
+                            }
+                
+                            out.print("</table>");
+                                %>
+                </div>
                 
             </div>
         </div>

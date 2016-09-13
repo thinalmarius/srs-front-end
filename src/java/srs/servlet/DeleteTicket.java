@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package srs.servlet;
-import logic.Logiclink;
-import logic.Logiclink_Service;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +12,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import logic.Logiclink;
+import logic.Logiclink_Service;
 
 /**
  *
  * @author Thinal
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "DeleteTicket", urlPatterns = {"/delete"})
+public class DeleteTicket extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,7 +34,12 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        String idTemp = request.getParameter("id");
+        int id = Integer.parseInt(idTemp);
+        Logiclink_Service service = new Logiclink_Service();
+        Logiclink proxy = service.getLogiclinkPort();
+        proxy.deleteTicket(id);
+        response.sendRedirect("viewtickets.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,40 +68,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Logiclink_Service service = new Logiclink_Service();
-        Logiclink proxy = service.getLogiclinkPort();
-        Object username = request.getParameter("txtUsername");
-        Object password = request.getParameter("txtpassword");
-        
-        
-        String mesg=proxy.checkUserPsd(username.toString(), password.toString());
-        HttpSession session=request.getSession();
-        PrintWriter out=response.getWriter(); 
-        if(session.getAttribute("userSession") == null){
-            if (username == null || password == null) {
-                response.sendRedirect("login.jsp"); 
-                //return;
-           
-            } else if ( mesg==null) {
-           
-                request.getRequestDispatcher("login.jsp").include(request, response);  
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('Invalid username or password');");
-                out.println("location='login.jsp';");
-                out.println("</script>");
-                out.close();
-                //return;
-            } else {
-             session.setAttribute("userSession", username.toString());
-             response.sendRedirect("home.jsp");
-             //return;
-            }
-        } else {
-           username = session.getAttribute("userSession");
-           response.sendRedirect("home.jsp");
-           //return;
-        }
-       
+        processRequest(request, response);
     }
 
     /**

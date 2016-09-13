@@ -1,12 +1,11 @@
 <%-- 
-    Document   : viewtickets
-    Created on : Aug 11, 2016, 8:40:41 PM
+    Document   : viewcustomers
+    Created on : Sep 11, 2016, 8:53:32 PM
     Author     : Thinal
 --%>
 
-
+<%@page import="logic.Customers"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="logic.Tickets"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
@@ -14,7 +13,7 @@
 <%@page import="logic.Logiclink_Service"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%if(session.getAttribute("userSession") == null){
+<%if(session.getAttribute("userSession")==null){
             response.sendRedirect("login.jsp");
             return;
        } %>
@@ -22,7 +21,7 @@
 <html>
     <head>
         
-        <title>View Ticket</title>
+        <title>Manage Customers</title>
         <link rel="stylesheet" type="text/css" href="styles.css" />
         <meta name="viewprot" content="width=device-width, initial-scale: 1.0, user-scalabe=0" />
     </head>
@@ -36,8 +35,8 @@
             <div class="sidebar">
                 <ul id="nav">
                     <li><a href="home.jsp">Home</a></li>
-                    <li><a href="customers.jsp">Customers</a></li>
-                    <li><a class="selected" href="tickets.jsp">Tickets</a></li>                 
+                    <li><a class="selected" href="customers.jsp">Customers</a></li>
+                    <li><a href="tickets.jsp">Tickets</a></li>                 
                     <% 
                         String user = (String)session.getAttribute("userSession");
                         if(user.equals("admin")){
@@ -47,38 +46,35 @@
                 </ul>
             </div>
             <div class="content">
-                <h1>View Tickets</h1>
+                <h1>View Customers</h1>
                 
                 <div class="select">
-                    <li><a href="newticket.jsp">New Ticket</a></li>
-                    <li><a class="selected" href="viewtickets.jsp">View Tickets</a></li>        
+                    <li><a href="newcustomer.jsp">Register Customer</a></li>
+                    <li><a class="selected" href="viewcustomers.jsp">View Customers</a></li>        
                 </div>
                 <br>
-                
-               <div class="view_ticket">
-                        <%
+                <div class="view_customers">
+                    <%
                             
-                            ArrayList<Tickets> ticket = new ArrayList<Tickets>();
+                            
                             Logiclink_Service service = new Logiclink_Service();
                             Logiclink proxy = service.getLogiclinkPort();
-                            ticket=(ArrayList<Tickets>)proxy.viewTickets();
+                            ArrayList<Customers> customer = new ArrayList<Customers>();
+                            customer =(ArrayList<Customers>) proxy.viewCustomers();
+                                                        
                             
-                            //out.print("<br>");
                             out.print("<table>");
-                            out.print("<tr><th>Name</th><th>Email</th><th class="+"big_row"+">Problem</th><th>Severity</th><th>Date</th></tr>");
+                            out.print("<tr><th>Name</th><th>Email</th><th>Company</th></tr>");
                             
-                            for (Tickets t : ticket){
+                            for (Customers c : customer){
                                 out.print("<tr><td>"
-                                +t.getName()
+                                +c.getName()
                                 +"</td><td>"
-                                +t.getEmail()
+                                +c.getEmail()
                                 +"</td><td>"
-                                +t.getProb()
+                                +c.getCompany()
                                 +"</td><td>"
-                                +t.getSeverity()
-                                +"</td><td>"
-                                +t.getDate()
-                                +"</td><td><a href="+"delete?id="+t.getId()+">Delete</a></td></tr>");
+                                +"<a href="+"deleteCus?id="+c.getId()+">Delete</a></td></tr>");
                             }
                 
                             out.print("</table>");

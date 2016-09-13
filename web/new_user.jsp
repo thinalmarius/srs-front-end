@@ -1,6 +1,6 @@
 <%-- 
-    Document   : users
-    Created on : Aug 8, 2016, 3:02:10 PM
+    Document   : new_user
+    Created on : Sep 11, 2016, 7:35:27 PM
     Author     : Thinal
 --%>
 
@@ -39,12 +39,23 @@
                 </ul>
             </div>
             <div class="content">
-                <h1>Manage Users</h1>
+                <h1>Register User</h1>
                 <div class="select">
-                    <li><a href="new_user.jsp">Register User</a></li>
+                    <li><a class="selected" href="new_user.jsp">Register User</a></li>
                     <li><a href="view_users.jsp">View Users</a></li>        
                 </div>
-                <p></p>
+                <br>
+                
+                <div class="reg">
+                    <p><strong>Insert Details</strong></p><br>
+                    <form action="UserHandler" method="post">
+                    <div class="row"><label>Username:</label><input type="text" name="name" required="true" placeholder="Username" maxlength="32"><br><br></div>
+                    <div class="row"><label>Password:</label><input type="password" name="password" required="true" placeholder="Password" maxlength="50"><br><br></div>
+                    <div class="row"><label>Email:</label><input type="text" name="email" required="true" placeholder="Email" maxlength="50"><br><br></div>
+                    <div class="save_button"><input type="submit" value="Save"></input></div>
+                </form>
+                    
+                </div>
                 
             </div>
         </div>

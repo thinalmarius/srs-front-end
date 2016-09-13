@@ -65,10 +65,10 @@ public class TicketHandler extends HttpServlet {
         Object company = request.getParameter("company");
         Object message = request.getParameter("area");
         
-        int id=proxy.getCusId(name.toString(), company.toString());
+        int id=proxy.getCusId(name.toString(), email.toString());
         
         if(id!=0){
-            proxy.getMessage(id, message.toString());
+            proxy.getMessage(id, email.toString(), message.toString());
             request.getRequestDispatcher("newticket.jsp").include(request, response); 
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Successfully added');");
