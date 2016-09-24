@@ -53,7 +53,7 @@
                     <li><a class="selected" href="viewcustomers.jsp">View Customers</a></li>        
                 </div>
                 <br>
-                <div class="view_customers">
+                <div class="view_customers table-full-width">
                     <%
                             
                             
@@ -62,23 +62,23 @@
                             ArrayList<Customers> customer = new ArrayList<Customers>();
                             customer =(ArrayList<Customers>) proxy.viewCustomers();
                                                         
-                            
-                            out.print("<table>");
-                            out.print("<tr><th>Name</th><th>Email</th><th>Company</th></tr>");
-                            
-                            for (Customers c : customer){
-                                out.print("<tr><td>"
-                                +c.getName()
-                                +"</td><td>"
-                                +c.getEmail()
-                                +"</td><td>"
-                                +c.getCompany()
-                                +"</td><td>"
-                                +"<a href="+"deleteCus?id="+c.getId()+">Delete</a></td></tr>");
-                            }
+                            %>
+                            <table class="table table_customers">
+                                <thead><tr><th>Name</th><th>Email</th><th>Company</th></tr></thead>
+                            <%
+                            for (Customers c : customer){%>
+                                <tbody><tr><td>
+                                <%out.print(c.getName());%>
+                                </td><td>
+                                <%out.print(c.getEmail());%>
+                                </td><td>
+                                <%out.print(c.getCompany());%>
+                                </td><td class="delete">
+                                <a href=deleteCus?id=<%c.getId();%>">Delete</a></td></tr>
+                            <%}%>
                 
-                            out.print("</table>");
-                                %>
+                            </table>
+                              
                 </div>
                 
                 

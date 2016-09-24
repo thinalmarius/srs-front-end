@@ -73,15 +73,20 @@ public class LoginServlet extends HttpServlet {
         HttpSession session=request.getSession();
         PrintWriter out=response.getWriter(); 
         if(session.getAttribute("userSession") == null){
-            if (username == null || password == null) {
-                response.sendRedirect("login.jsp"); 
-                //return;
+            if (username.equals(null) || password.equals(null)) {
+                //response.sendRedirect("login.jsp"); 
+                request.getRequestDispatcher("login.jsp").include(request, response);  
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Please enter valid username and password!');");
+                out.println("location='login.jsp';");
+                out.println("</script>");
+                out.close();
            
             } else if ( mesg==null) {
            
                 request.getRequestDispatcher("login.jsp").include(request, response);  
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('Invalid username or password');");
+                out.println("alert('Invalid Credentials');");
                 out.println("location='login.jsp';");
                 out.println("</script>");
                 out.close();

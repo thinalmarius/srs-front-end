@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Login
-    Created on : Jul 29, 2016, 10:47:35 AM
+    Document   : forgot
+    Created on : Sep 15, 2016, 4:01:35 PM
     Author     : Thinal
 --%>
 
@@ -10,34 +10,33 @@
        if(session.getAttribute("userSession") != null){
             response.sendRedirect("home.jsp");
        } 
-%>
+    %>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login</title>
+        <title>Reset Password</title>
         <link rel="stylesheet" type="text/css" href="styles.css" />
         <meta name="viewprot" content="width=device-width, initial-scale: 1.0, user-scalabe=0" />
         
     </head>
-    <body class='login_form'>
+    <body>
         <div id="header">
             <div class="logo"><a href="home.jsp"><span>SRS</span></a></div>
         </div>
-        <div id="login">
-            <div id="log">
-            <h1>Login</h1>
-            <form action="LoginServlet" method="post">
+        <div id="forgot">
+            <div id="fog">
+                <h1>Please enter Username and Email</h1><br>
+            <form action="Forgot" method="post">
             
-            <input type="text" name="txtUsername" placeholder="Username.."></input>
+            <input type="text" name="username" placeholder="Username.."></input>
             
-            <input type="password" name="txtpassword" placeholder="Password.."></input></div>
+            <input type="text" name="email" placeholder="Email.."></input></div>
             
             
-                <input type="submit" class="btn" value="Login"></input></form><br>
+            <input type="submit" class="btn" value="Reset"></input></form><br>
             
-            <a class="forgot_link" href="forgot.jsp">Forgot Password?</a>
-            
+                       
         </div>
     </body>
 </html>

@@ -34,6 +34,18 @@
 
 <xs:element name="getMessageResponse" type="tns:getMessageResponse"/>
 
+<xs:element name="getPassword" type="tns:getPassword"/>
+
+<xs:element name="getPasswordResponse" type="tns:getPasswordResponse"/>
+
+<xs:element name="getUserId" type="tns:getUserId"/>
+
+<xs:element name="getUserIdResponse" type="tns:getUserIdResponse"/>
+
+<xs:element name="sendPassword" type="tns:sendPassword"/>
+
+<xs:element name="sendPasswordResponse" type="tns:sendPasswordResponse"/>
+
 <xs:element name="viewCustomers" type="tns:viewCustomers"/>
 
 <xs:element name="viewCustomersResponse" type="tns:viewCustomersResponse"/>
@@ -46,15 +58,14 @@
 
 <xs:element name="viewUsersResponse" type="tns:viewUsersResponse"/>
 
-<xs:complexType name="addUser">
+<xs:complexType name="sendPassword">
 <xs:sequence>
-<xs:element name="name" type="xs:string" minOccurs="0"/>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="pswd" type="xs:string" minOccurs="0"/>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="addUserResponse">
+<xs:complexType name="sendPasswordResponse">
 <xs:sequence/>
 </xs:complexType>
 
@@ -79,6 +90,18 @@
 
 <xs:complexType name="deleteTicketResponse">
 <xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getPassword">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPasswordResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="viewUsers">
@@ -115,19 +138,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getCusId">
-<xs:sequence>
-<xs:element name="name" type="xs:string" minOccurs="0"/>
-<xs:element name="company" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getCusIdResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="viewTickets">
 <xs:sequence/>
 </xs:complexType>
@@ -138,14 +148,17 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="deleteCustomer">
+<xs:complexType name="getUserId">
 <xs:sequence>
-<xs:element name="arg0" type="xs:int"/>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="deleteCustomerResponse">
-<xs:sequence/>
+<xs:complexType name="getUserIdResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="deleteUser">
@@ -155,6 +168,42 @@
 </xs:complexType>
 
 <xs:complexType name="deleteUserResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="addUser">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="pswd" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addUserResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getCusId">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCusIdResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteCustomer">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteCustomerResponse">
 <xs:sequence/>
 </xs:complexType>
 

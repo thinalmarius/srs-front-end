@@ -7,7 +7,6 @@ package srs.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,14 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import logic.Logiclink;
 import logic.Logiclink_Service;
-import logic.Users;
 
 /**
  *
  * @author Thinal
  */
-@WebServlet(name = "UserHandler", urlPatterns = {"/UserHandler"})
-public class UserHandler extends HttpServlet {
+@WebServlet(name = "ForgotPass", urlPatterns = {"/Forgot"})
+public class ForgotPass extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +34,29 @@ public class UserHandler extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=response.getWriter();
+        Logiclink_Service service = new Logiclink_Service();
+        Logiclink proxy = service.getLogiclinkPort();
+        Object name = request.getParameter("username");
+        Object email = request.getParameter("email");
         
+        int id=proxy.getUserId(name.toString(), email.toString());
+         if(id!=0){
+            String pass=proxy.getPassword(name.toString());
+            proxy.sendPassword(email.toString(), pass);
+            request.getRequestDispatcher("login.jsp").include(request, response); 
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('You will receive a mail');");
+            out.println("location='login.jsp';");
+            out.println("</script>"); 
+        }else{
+            request.getRequestDispatcher("login.jsp").include(request, response); 
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Invalid Username or Email');");
+            out.println("location='login.jsp';");
+            out.println("</script>"); 
+            
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -65,39 +85,7 @@ public class UserHandler extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out=response.getWriter();
-        Logiclink_Service service = new Logiclink_Service();
-        Logiclink proxy = service.getLogiclinkPort();
-        Object name = request.getParameter("name");
-        Object username = request.getParameter("username").toLowerCase();
-        Object email = request.getParameter("email");
-        Object password = request.getParameter("password");
-        List<Users> user = proxy.viewUsers();
-        String userName=null, emailId=null;
-        for(Users users : user){
-            userName=users.getUsername();
-            emailId=users.getEmail();
-            if(userName.equals(username)||emailId.equals(email)){
-                break;
-            }
-            
-        }
-        if(userName.equals(username)||emailId.equals(email)){
-            request.getRequestDispatcher("new_user.jsp").include(request, response); 
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('User already registered');");
-            out.println("location='new_user.jsp';");
-            out.println("</script>"); 
-            out.close();
-        }else{
-            proxy.addUser(name.toString(), username.toString(), email.toString(), password.toString());
-            request.getRequestDispatcher("new_user.jsp").include(request, response); 
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('Registration Successful');");
-            out.println("location='new_user.jsp';");
-            out.println("</script>"); 
-            out.close();
-        }
+        processRequest(request, response);
     }
 
     /**

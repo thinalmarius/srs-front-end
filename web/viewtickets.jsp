@@ -55,34 +55,36 @@
                 </div>
                 <br>
                 
-               <div class="view_ticket">
+               <div class="view_table table-full-width">
                         <%
                             
                             ArrayList<Tickets> ticket = new ArrayList<Tickets>();
                             Logiclink_Service service = new Logiclink_Service();
                             Logiclink proxy = service.getLogiclinkPort();
                             ticket=(ArrayList<Tickets>)proxy.viewTickets();
+                            %>
                             
-                            //out.print("<br>");
-                            out.print("<table>");
-                            out.print("<tr><th>Name</th><th>Email</th><th class="+"big_row"+">Problem</th><th>Severity</th><th>Date</th></tr>");
+                            <table class="table_row table">
+                            <thead><tr><th>Name</th><th>Email</th><th class="big_row">Problem</th><th>Severity</th><th>Date</th></tr></thead>
+                                <%
+                            for (Tickets t : ticket){ %>
+                                <tbody><tr><td>
+                                <%out.println(t.getName());%>
+                                </td><td>
+                                <%out.println(t.getEmail());%>
+                                </td><td>
+                                <%out.println(t.getProb());%>
+                                </td><td>
+                                <%out.println(t.getSeverity());%>
+                                </td><td>
+                                <%out.println(t.getDate());%>
                             
-                            for (Tickets t : ticket){
-                                out.print("<tr><td>"
-                                +t.getName()
-                                +"</td><td>"
-                                +t.getEmail()
-                                +"</td><td>"
-                                +t.getProb()
-                                +"</td><td>"
-                                +t.getSeverity()
-                                +"</td><td>"
-                                +t.getDate()
-                                +"</td><td><a href="+"delete?id="+t.getId()+">Delete</a></td></tr>");
-                            }
-                
-                            out.print("</table>");
-                                %>
+                                </td><td class="delete"><a href="delete?id= <% t.getId(); %>">Delete</a></td></tr><tbody>
+                           
+                                <% }
+                %>
+                            </table>
+                                
                 </div>
                 
                 

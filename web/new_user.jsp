@@ -48,13 +48,24 @@
                 
                 <div class="reg">
                     <p><strong>Insert Details</strong></p><br>
-                    <form action="UserHandler" method="post">
-                    <div class="row"><label>Username:</label><input type="text" name="name" required="true" placeholder="Username" maxlength="32"><br><br></div>
+                    <form name="user" action="UserHandler" method="post" onsubmit="return validateForm();">
+                        <div class="row"><label>Name:</label><input type="text" name="name" required="true" placeholder="Name" maxlength="50"><br><br></div>
+                    <div class="row"><label>Username:</label><input type="text" name="username" required="true" placeholder="Username" maxlength="32"><br><br></div>
                     <div class="row"><label>Password:</label><input type="password" name="password" required="true" placeholder="Password" maxlength="50"><br><br></div>
                     <div class="row"><label>Email:</label><input type="text" name="email" required="true" placeholder="Email" maxlength="50"><br><br></div>
                     <div class="save_button"><input type="submit" value="Save"></input></div>
                 </form>
-                    
+                <script>
+                function validateForm() {
+                    var x = document.forms["user"]["email"].value;
+                    var atpos = x.indexOf("@");
+                    var dotpos = x.lastIndexOf(".");
+                    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+                        alert("Invalid e-mail address");
+                        return false;
+                    }
+                }
+                </script>     
                 </div>
                 
             </div>

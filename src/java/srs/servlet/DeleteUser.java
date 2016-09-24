@@ -34,13 +34,23 @@ public class DeleteUser extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
         String idTemp = request.getParameter("id");
         int id = Integer.parseInt(idTemp);
-        Logiclink_Service service = new Logiclink_Service();
-        Logiclink proxy = service.getLogiclinkPort();
-        proxy.deleteUser(id);
-        response.sendRedirect("view_users.jsp");
+        if(id==1){
+            request.getRequestDispatcher("view_users.jsp").include(request, response); 
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Admin cannot be deleted');");
+            out.println("location='view_users.jsp';");
+            out.println("</script>"); 
+            //response.sendRedirect("view_users.jsp");
+            out.close();
+        }else{
+            Logiclink_Service service = new Logiclink_Service();
+            Logiclink proxy = service.getLogiclinkPort();
+            proxy.deleteUser(id);
+            response.sendRedirect("view_users.jsp");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

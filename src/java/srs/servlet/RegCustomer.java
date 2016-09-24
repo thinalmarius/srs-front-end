@@ -7,11 +7,13 @@ package srs.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logic.Customers;
 import logic.Logiclink;
 import logic.Logiclink_Service;
 
@@ -70,26 +72,44 @@ public class RegCustomer extends HttpServlet {
         PrintWriter out=response.getWriter();
         Logiclink_Service service = new Logiclink_Service();
         Logiclink proxy = service.getLogiclinkPort();
+        List<Customers> customer = proxy.viewCustomers();
+        String cusName=null , cusEmail=null;
         Object name = request.getParameter("name");
         Object email = request.getParameter("email");
         Object company = request.getParameter("company");
-        int ret=proxy.addCustomer(name.toString(), email.toString(), company.toString());
-        if(ret==1){
+        for(Customers customers : customer){
+            cusName = customers.getName();
+            cusEmail = customers.getEmail();
+            if(cusName.equals(name) || cusEmail.equals(email)){
+                break;
+            }
+        }
+        if(cusName.equals(name)||cusEmail.equals(email)){
             request.getRequestDispatcher("newcustomer.jsp").include(request, response); 
             out.println("<script type=\"text/javascript\">");
-            out.println("alert('Registration Successful');");
+            out.println("alert('Customer Information Already Exists!');");
             out.println("location='newcustomer.jsp';");
-            out.println("</script>"); 
-            
+            out.println("</script>");
+            out.close();
+        }else{
+            int ret=proxy.addCustomer(name.toString(), email.toString(), company.toString());
+            if(ret==1){
+                request.getRequestDispatcher("newcustomer.jsp").include(request, response); 
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Registration Successful');");
+                out.println("location='newcustomer.jsp';");
+                out.println("</script>"); 
+
+            }
+            else{
+                request.getRequestDispatcher("newcustomer.jsp").include(request, response); 
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Registration Failed');");
+                out.println("location='newcustomer.jsp';");
+                out.println("</script>"); 
+            }
+            out.close();
         }
-        else{
-            request.getRequestDispatcher("newcustomer.jsp").include(request, response); 
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('Registration Failed');");
-            out.println("location='newcustomer.jsp';");
-            out.println("</script>"); 
-        }
-        out.close();
     }
 
     /**

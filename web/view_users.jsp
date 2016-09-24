@@ -47,30 +47,31 @@
                     <li><a class="selected" href="view_users.jsp">View Users</a></li>        
                 </div>
                 <br>
-                <div class="view_users">
-                    <%
-                            
+                <div class="view_users table-full-width">
+                   
+                    <%    
                             
                             Logiclink_Service service = new Logiclink_Service();
                             Logiclink proxy = service.getLogiclinkPort();
                             ArrayList<Users> user = new ArrayList<Users>();
                             user =(ArrayList<Users>) proxy.viewUsers();
-                                                        
+                            %>                            
                             
-                            out.print("<table>");
-                            out.print("<tr><th>Username</th><th>Email</th></tr>");
-                            
-                            for (Users u : user){
-                                out.print("<tr><td>"
-                                +u.getName()
-                                +"</td><td>"
-                                +u.getEmail()
-                                +"</td><td>"
-                                +"<a class="+"delete"+" href="+"deleteUser?id="+u.getId()+">Delete</a></td></tr>");
-                            }
+                            <table class="table_users table">
+                                <thead><tr><th>Name</th><th>Username</th><th>Email</th></tr></thead>
+                            <%
+                            for (Users u : user){%>
+                                <tbody><tr><td>
+                                <%out.print(u.getName());%>
+                                </td><td>
+                                <%out.print(u.getUsername());%>
+                                </td><td>
+                                <%out.print(u.getEmail());%>
+                                </td><td class="delete">
+                                    <a href="deleteUser?id=<%u.getId();%>">Delete</a></td></tr></tbody>
+                            <%}%>
                 
-                            out.print("</table>");
-                                %>
+                            </table>
                 </div>
                 
             </div>

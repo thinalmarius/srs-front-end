@@ -13,23 +13,11 @@
 <message name="getMessageResponse">
 <part name="parameters" element="tns:getMessageResponse"/>
 </message>
-<message name="checkUserPsd">
-<part name="parameters" element="tns:checkUserPsd"/>
+<message name="addUser">
+<part name="parameters" element="tns:addUser"/>
 </message>
-<message name="checkUserPsdResponse">
-<part name="parameters" element="tns:checkUserPsdResponse"/>
-</message>
-<message name="getCusId">
-<part name="parameters" element="tns:getCusId"/>
-</message>
-<message name="getCusIdResponse">
-<part name="parameters" element="tns:getCusIdResponse"/>
-</message>
-<message name="viewTickets">
-<part name="parameters" element="tns:viewTickets"/>
-</message>
-<message name="viewTicketsResponse">
-<part name="parameters" element="tns:viewTicketsResponse"/>
+<message name="addUserResponse">
+<part name="parameters" element="tns:addUserResponse"/>
 </message>
 <message name="addCustomer">
 <part name="parameters" element="tns:addCustomer"/>
@@ -37,11 +25,11 @@
 <message name="addCustomerResponse">
 <part name="parameters" element="tns:addCustomerResponse"/>
 </message>
-<message name="deleteCustomer">
-<part name="parameters" element="tns:deleteCustomer"/>
+<message name="deleteUser">
+<part name="parameters" element="tns:deleteUser"/>
 </message>
-<message name="deleteCustomerResponse">
-<part name="parameters" element="tns:deleteCustomerResponse"/>
+<message name="deleteUserResponse">
+<part name="parameters" element="tns:deleteUserResponse"/>
 </message>
 <message name="viewUsers">
 <part name="parameters" element="tns:viewUsers"/>
@@ -49,11 +37,23 @@
 <message name="viewUsersResponse">
 <part name="parameters" element="tns:viewUsersResponse"/>
 </message>
-<message name="deleteTicket">
-<part name="parameters" element="tns:deleteTicket"/>
+<message name="deleteCustomer">
+<part name="parameters" element="tns:deleteCustomer"/>
 </message>
-<message name="deleteTicketResponse">
-<part name="parameters" element="tns:deleteTicketResponse"/>
+<message name="deleteCustomerResponse">
+<part name="parameters" element="tns:deleteCustomerResponse"/>
+</message>
+<message name="viewTickets">
+<part name="parameters" element="tns:viewTickets"/>
+</message>
+<message name="viewTicketsResponse">
+<part name="parameters" element="tns:viewTicketsResponse"/>
+</message>
+<message name="getUserId">
+<part name="parameters" element="tns:getUserId"/>
+</message>
+<message name="getUserIdResponse">
+<part name="parameters" element="tns:getUserIdResponse"/>
 </message>
 <message name="viewCustomers">
 <part name="parameters" element="tns:viewCustomers"/>
@@ -61,62 +61,92 @@
 <message name="viewCustomersResponse">
 <part name="parameters" element="tns:viewCustomersResponse"/>
 </message>
-<message name="deleteUser">
-<part name="parameters" element="tns:deleteUser"/>
+<message name="getCusId">
+<part name="parameters" element="tns:getCusId"/>
 </message>
-<message name="deleteUserResponse">
-<part name="parameters" element="tns:deleteUserResponse"/>
+<message name="getCusIdResponse">
+<part name="parameters" element="tns:getCusIdResponse"/>
 </message>
-<message name="addUser">
-<part name="parameters" element="tns:addUser"/>
+<message name="sendPassword">
+<part name="parameters" element="tns:sendPassword"/>
 </message>
-<message name="addUserResponse">
-<part name="parameters" element="tns:addUserResponse"/>
+<message name="sendPasswordResponse">
+<part name="parameters" element="tns:sendPasswordResponse"/>
+</message>
+<message name="deleteTicket">
+<part name="parameters" element="tns:deleteTicket"/>
+</message>
+<message name="deleteTicketResponse">
+<part name="parameters" element="tns:deleteTicketResponse"/>
+</message>
+<message name="getPassword">
+<part name="parameters" element="tns:getPassword"/>
+</message>
+<message name="getPasswordResponse">
+<part name="parameters" element="tns:getPasswordResponse"/>
+</message>
+<message name="checkUserPsd">
+<part name="parameters" element="tns:checkUserPsd"/>
+</message>
+<message name="checkUserPsdResponse">
+<part name="parameters" element="tns:checkUserPsdResponse"/>
 </message>
 <portType name="logiclink">
 <operation name="getMessage">
 <input wsam:Action="http://logiclayer/logiclink/getMessageRequest" message="tns:getMessage"/>
 <output wsam:Action="http://logiclayer/logiclink/getMessageResponse" message="tns:getMessageResponse"/>
 </operation>
-<operation name="checkUserPsd">
-<input wsam:Action="http://logiclayer/logiclink/checkUserPsdRequest" message="tns:checkUserPsd"/>
-<output wsam:Action="http://logiclayer/logiclink/checkUserPsdResponse" message="tns:checkUserPsdResponse"/>
-</operation>
-<operation name="getCusId">
-<input wsam:Action="http://logiclayer/logiclink/getCusIdRequest" message="tns:getCusId"/>
-<output wsam:Action="http://logiclayer/logiclink/getCusIdResponse" message="tns:getCusIdResponse"/>
-</operation>
-<operation name="viewTickets">
-<input wsam:Action="http://logiclayer/logiclink/viewTicketsRequest" message="tns:viewTickets"/>
-<output wsam:Action="http://logiclayer/logiclink/viewTicketsResponse" message="tns:viewTicketsResponse"/>
+<operation name="addUser">
+<input wsam:Action="http://logiclayer/logiclink/addUserRequest" message="tns:addUser"/>
+<output wsam:Action="http://logiclayer/logiclink/addUserResponse" message="tns:addUserResponse"/>
 </operation>
 <operation name="addCustomer">
 <input wsam:Action="http://logiclayer/logiclink/addCustomerRequest" message="tns:addCustomer"/>
 <output wsam:Action="http://logiclayer/logiclink/addCustomerResponse" message="tns:addCustomerResponse"/>
 </operation>
-<operation name="deleteCustomer">
-<input wsam:Action="http://logiclayer/logiclink/deleteCustomerRequest" message="tns:deleteCustomer"/>
-<output wsam:Action="http://logiclayer/logiclink/deleteCustomerResponse" message="tns:deleteCustomerResponse"/>
+<operation name="deleteUser">
+<input wsam:Action="http://logiclayer/logiclink/deleteUserRequest" message="tns:deleteUser"/>
+<output wsam:Action="http://logiclayer/logiclink/deleteUserResponse" message="tns:deleteUserResponse"/>
 </operation>
 <operation name="viewUsers">
 <input wsam:Action="http://logiclayer/logiclink/viewUsersRequest" message="tns:viewUsers"/>
 <output wsam:Action="http://logiclayer/logiclink/viewUsersResponse" message="tns:viewUsersResponse"/>
 </operation>
-<operation name="deleteTicket">
-<input wsam:Action="http://logiclayer/logiclink/deleteTicketRequest" message="tns:deleteTicket"/>
-<output wsam:Action="http://logiclayer/logiclink/deleteTicketResponse" message="tns:deleteTicketResponse"/>
+<operation name="deleteCustomer">
+<input wsam:Action="http://logiclayer/logiclink/deleteCustomerRequest" message="tns:deleteCustomer"/>
+<output wsam:Action="http://logiclayer/logiclink/deleteCustomerResponse" message="tns:deleteCustomerResponse"/>
+</operation>
+<operation name="viewTickets">
+<input wsam:Action="http://logiclayer/logiclink/viewTicketsRequest" message="tns:viewTickets"/>
+<output wsam:Action="http://logiclayer/logiclink/viewTicketsResponse" message="tns:viewTicketsResponse"/>
+</operation>
+<operation name="getUserId">
+<input wsam:Action="http://logiclayer/logiclink/getUserIdRequest" message="tns:getUserId"/>
+<output wsam:Action="http://logiclayer/logiclink/getUserIdResponse" message="tns:getUserIdResponse"/>
 </operation>
 <operation name="viewCustomers">
 <input wsam:Action="http://logiclayer/logiclink/viewCustomersRequest" message="tns:viewCustomers"/>
 <output wsam:Action="http://logiclayer/logiclink/viewCustomersResponse" message="tns:viewCustomersResponse"/>
 </operation>
-<operation name="deleteUser">
-<input wsam:Action="http://logiclayer/logiclink/deleteUserRequest" message="tns:deleteUser"/>
-<output wsam:Action="http://logiclayer/logiclink/deleteUserResponse" message="tns:deleteUserResponse"/>
+<operation name="getCusId">
+<input wsam:Action="http://logiclayer/logiclink/getCusIdRequest" message="tns:getCusId"/>
+<output wsam:Action="http://logiclayer/logiclink/getCusIdResponse" message="tns:getCusIdResponse"/>
 </operation>
-<operation name="addUser">
-<input wsam:Action="http://logiclayer/logiclink/addUserRequest" message="tns:addUser"/>
-<output wsam:Action="http://logiclayer/logiclink/addUserResponse" message="tns:addUserResponse"/>
+<operation name="sendPassword">
+<input wsam:Action="http://logiclayer/logiclink/sendPasswordRequest" message="tns:sendPassword"/>
+<output wsam:Action="http://logiclayer/logiclink/sendPasswordResponse" message="tns:sendPasswordResponse"/>
+</operation>
+<operation name="deleteTicket">
+<input wsam:Action="http://logiclayer/logiclink/deleteTicketRequest" message="tns:deleteTicket"/>
+<output wsam:Action="http://logiclayer/logiclink/deleteTicketResponse" message="tns:deleteTicketResponse"/>
+</operation>
+<operation name="getPassword">
+<input wsam:Action="http://logiclayer/logiclink/getPasswordRequest" message="tns:getPassword"/>
+<output wsam:Action="http://logiclayer/logiclink/getPasswordResponse" message="tns:getPasswordResponse"/>
+</operation>
+<operation name="checkUserPsd">
+<input wsam:Action="http://logiclayer/logiclink/checkUserPsdRequest" message="tns:checkUserPsd"/>
+<output wsam:Action="http://logiclayer/logiclink/checkUserPsdResponse" message="tns:checkUserPsdResponse"/>
 </operation>
 </portType>
 <binding name="logiclinkPortBinding" type="tns:logiclink">
@@ -130,25 +160,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="checkUserPsd">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getCusId">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="viewTickets">
+<operation name="addUser">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -166,7 +178,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="deleteCustomer">
+<operation name="deleteUser">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -184,7 +196,25 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="deleteTicket">
+<operation name="deleteCustomer">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="viewTickets">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getUserId">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -202,7 +232,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="deleteUser">
+<operation name="getCusId">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -211,7 +241,34 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="addUser">
+<operation name="sendPassword">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="deleteTicket">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getPassword">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="checkUserPsd">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

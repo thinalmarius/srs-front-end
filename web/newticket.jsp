@@ -55,14 +55,24 @@
                 
                 <div class="reg">
                     <p><strong>Insert Details</strong></p><br>
-                    <form action="TicketHandler" method="post" onsubmit="save()">
-                    <div class="row"><label>Name:</label><input type="text" name="name" required="true" placeholder="Name" maxlength="32"><br><br></div>
-                    <div class="row"><label>Email:</label><input type="text" name="email" required="true" placeholder="Email" maxlength="50"><br><br></div>
-                    <div class="row"><label>Company:</label><input type="text" name="company" required="true" placeholder="Company"><br><br></div>
-                    <div class="row"><label>Problem Area:</label><textarea name="area" required="true" placeholder="Problem Area"></textarea><br><br></div>
-                    <div class="ticket_save_button"><input type="submit" value="Save"></input></div>
+                    <form name="ticket" action="TicketHandler" method="post" onsubmit="return validateForm();">
+                    <div class="row"><label>Name:</label><input type="text" name="name" required="true" placeholder="Name" maxlength="32"><br></div>
+                    <div class="row"><label>Email:</label><input type="text" name="email" required="true" placeholder="Email" maxlength="50"><br></div>
+                    <div class="row"><label>Company:</label><input type="text" name="company" required="true" placeholder="Company"><br></div>
+                    <div class="row"><label>Problem Area:</label><textarea name="area" required="true" placeholder="Problem Area"></textarea><br></div>
+                    <div class="save_button"><input type="submit" value="Save"></input></div>
                 </form>
-                    
+                <script>
+                function validateForm() {
+                    var x = document.forms["ticket"]["email"].value;
+                    var atpos = x.indexOf("@");
+                    var dotpos = x.lastIndexOf(".");
+                    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+                        alert("Invalid e-mail address");
+                        return false;
+                    }
+                }
+                </script>    
                 </div>
                 
                 
